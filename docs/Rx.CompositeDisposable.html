@@ -79,7 +79,7 @@ offers O(1) add and removal complexity.</p></div>
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="CompositeDisposable"><span class="type-signature"></span>new CompositeDisposable<span class="signature">(resources<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="CompositeDisposable"><span class="type-signature"></span>new CompositeDisposable<span class="signature">(&hellip;resources<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -144,6 +144,13 @@ offers O(1) add and removal complexity.</p></div>
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>local A = Disposable()
+local B = Disposable()
+local composite = CompositeDisposable(A, B)</code></pre>
+
+
 
 
     <h5>Parameters:</h5>
@@ -193,6 +200,8 @@ offers O(1) add and removal complexity.</p></div>
 
                 
 
+                
+                    &lt;repeatable><br>
                 
                 </td>
             

@@ -25,7 +25,7 @@
  * <ul>
  * <li>If the argument is <code>nil</code>, the methods can throw an error.
  * Note though that RxLua prevents <code>nil</code>s to enter into the flow and thus there is generally no
- * need to check for nulls in flows assembled from standard sources and intermediate operators.
+ * need to check for nils in flows assembled from standard sources and intermediate operators.
  * </li>
  * </ul>
  * @see <a href="http://reactivex.io/documentation/observable.html">ReactiveX documentation: Observable</a>

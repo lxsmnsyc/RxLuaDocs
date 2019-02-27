@@ -5,11 +5,16 @@
  * offers O(1) add and removal complexity.
  * 
  * @implements Rx.Disposable
+ * 
+ * @example
+ * local A = Disposable()
+ * local B = Disposable()
+ * local composite = CompositeDisposable(A, B)
  */
 class CompositeDisposable{
     /**
      * Creates a CompositeDisposables with the given array of initial elements.
-     * @param {(...Rx.Disposable)=} resources the array of Disposables to start with
+     * @param {...Rx.Disposable=} resources the array of Disposables to start with
      */
     constructor(){}
 
@@ -18,7 +23,6 @@ class CompositeDisposable{
      * container has been disposed.
      * @param {...Rx.Disposable} d the disposable to add, not nil
      * @return {boolean} true if successful, false if this container has been disposed
-     * 
      */
     add(d){}
     /**
