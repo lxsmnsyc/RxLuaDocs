@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Official RxLua Documentation",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "docdash": "^1.0.3",
+    "jsdoc": "^3.5.5"
+  },
   "devDependencies": {},
   "script": {
     "generate-docs": "node_modules/.bin/jsdoc -c conf.json"
