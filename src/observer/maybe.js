@@ -50,7 +50,7 @@ class MaybeObserver{
      * Notifies the MaybeObserver with one item and that the {@link Rx.Maybe} has finished sending
      * push-based notifications.
      * <p>
-     * The {@link Rx.Maybe} will not call this method if it calls {@link MaybeObserver#onError}.
+     * The {@link Rx.Maybe} will not call this method if it calls {@link Rx.MaybeObserver#onError}.
      *
      * @param {*} t the item emitted by the Maybe
      */
@@ -59,7 +59,7 @@ class MaybeObserver{
     /**
      * Notifies the MaybeObserver that the {@link Rx.Maybe} has experienced an error condition.
      * <p>
-     * If the {@link Rx.Maybe} calls this method, it will not thereafter call {@link MaybeObserver#onSuccess}.
+     * If the {@link Rx.Maybe} calls this method, it will not thereafter call {@link Rx.MaybeObserver#onSuccess}.
      *
      * @param {*} e the exception encountered by the Maybe
      */
