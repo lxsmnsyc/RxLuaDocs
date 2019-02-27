@@ -1,0 +1,27 @@
+{
+  "name": "rxlua-docs",
+  "version": "1.0.0",
+  "description": "Official RxLua Documentation",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LXSMNSYC/RxLuaDocs.git"
+  },
+  "keywords": [
+    "documents",
+    "reactivex",
+    "lua",
+    "rxlua"
+  ],
+  "author": "LXSMNSYC (alexis.munsayac@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LXSMNSYC/RxLuaDocs/issues"
+  },
+  "homepage": "https://github.com/LXSMNSYC/RxLuaDocs#readme"
+}
