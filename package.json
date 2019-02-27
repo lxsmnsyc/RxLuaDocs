@@ -8,8 +8,8 @@
     "jsdoc": "^3.5.5"
   },
   "devDependencies": {},
-  "script": {
-    "generate-docs": "node_modules/.bin/jsdoc -c conf.json"
+  "scripts": {
+    "install": "node_modules/.bin/jsdoc -c conf.json"
   },
   "repository": {
     "type": "git",
