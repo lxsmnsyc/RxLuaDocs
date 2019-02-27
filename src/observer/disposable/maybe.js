@@ -4,8 +4,6 @@
  * @classdesc
  * An abstract {@link Rx.MaybeObserver} that allows asynchronous cancellation by implementing Disposable.
  *
- * <p>All pre-implemented final methods are thread-safe.
- *
  * <p>Note that [onSuccess(Object)]{@link Rx.DisposableMaybeObserver#onSuccess}, [onError(Throwable)]{@link Rx.DisposableMaybeObserver#onSuccess} and [onComplete()]{@link Rx.DisposableMaybeObserver#onComplete} are
  * exclusive to each other, unlike a regular {@link Rx.Observer}, and
  * <code>onComplete()</code> is never called after an <code>onSuccess()</code>.

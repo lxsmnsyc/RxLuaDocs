@@ -3,8 +3,6 @@
  * @classdesc
  * An abstract {@link Rx.CompletableObserver} that allows asynchronous cancellation by implementing {@link Disposable}.
  *
- * <p>All pre-implemented final methods are thread-safe.
- *
  * <p>Like all other consumers, <code>DisposableCompletableObserver</code> can be subscribed only once.
  * Any subsequent attempt to subscribe it to a new source will yield a ProtocolViolation with messages:
  * <ul>

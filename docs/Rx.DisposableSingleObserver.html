@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>CompletableEmitter - RxLua</title>
+    <title>DisposableSingleObserver - RxLua</title>
     
     <meta name="description" content="Reactive Extensions for Lua" />
     
@@ -45,7 +45,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">CompletableEmitter</h1>
+    <h1 class="page-title">DisposableSingleObserver</h1>
     
 
     
@@ -60,81 +60,25 @@
         <h2>
             <span class="ancestors"><a href="Rx.html">Rx</a>.</span>
         
-        CompletableEmitter
+        DisposableSingleObserver
         </h2>
         
-            <div class="class-description"><p>Abstraction over an <a href="Rx.CompletableObserver.html">Rx.CompletableObserver</a> that allows associating
-a resource with it.</p>
-<p><p>
-All methods are safe to call from multiple threads, but note that there is no guarantee
-whose terminal event will win and get delivered to the downstream.</p>
-<p><p>
-Calling <a href="Rx.CompletableEmitter.html#onComplete">onComplete</a> multiple times has no effect.
-Calling <a href="Rx.CompletableEmitter.html#onError">onError(Throwable)</a> multiple times or after <code>onComplete</code> will route the
-exception into the global error handler via HostError.</p>
-<p><p>
-The emitter allows the registration of a single resource, in the form of a <a href="Rx.Disposable.html">Rx.Disposable</a> via 
-<a href="Rx.CompletableEmitter.html#setDisposable">setDisposable(Disposable)</a>. The emitter implementations will dispose/cancel this instance 
-when the downstream cancels the flow or after the event generator logic calls <a href="Rx.CompletableEmitter.html#onComplete">onComplete</a>
-or <a href="Rx.CompletableEmitter.html#onError">onError(Throwable)</a> succeeds.</p>
-<p><p>
-Only one <code>Disposable</code> object can be associated with the emitter at
-a time. Calling <code>setDisposable</code> method will dispose any previous object. If there
-is a need for handling multiple resources, one can create a <a href="Rx.CompositeDisposable.html">Rx.CompositeDisposable</a>
-and associate that with the emitter instead.</p></div>
+            <div class="class-description"><p>An abstract <a href="Rx.SingleObserver.html">Rx.SingleObserver</a> that allows asynchronous cancellation by implementing Disposable.</p>
+<p><p>Like all other consumers, <code>DisposableSingleObserver</code> can be subscribed only once.
+Any subsequent attempt to subscribe it to a new source will yield a ProtocolViolation with messages:</p>
+<ul>
+ <li><code>&quot;It is not allowed to subscribe with a(n) <class name> multiple times.&quot;</code></li>
+ <li><code>&quot;Disposable already set!</code>.</li>
+</ul> 
+
+<p><p>Implementation of <a href="Rx.DisposableSingleObserver.html#onStart">onStart()</a>, <a href="Rx.DisposableSingleObserver.html#onSuccess">onSuccess(Object)</a>
+and <a href="Rx.DisposableSingleObserver.html#onSuccess">onError(Throwable)</a>
+are not allowed to throw any unchecked exceptions.</p></div>
         
     
 </header>
 
 <article>
-    
-        <div class="container-overview">
-        
-            
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-            
-
-            
-        
-        </div>
     
 
     
@@ -159,7 +103,7 @@ and associate that with the emitter instead.</p></div>
 
     
 
-    <h4 class="name" id="isDisposed"><span class="type-signature"></span>isDisposed<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id="dispose"><span class="type-signature"></span>dispose<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -180,6 +124,13 @@ and associate that with the emitter instead.</p></div>
 
     
 
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="Rx.Disposable.html#dispose">Rx.Disposable#dispose</a></li>
+        
+    </ul></dd>
     
 
     
@@ -206,8 +157,96 @@ and associate that with the emitter instead.</p></div>
 
 
 <div class="description">
-    <p>Returns true if the downstream disposed the sequence or the
-emitter was terminated via <a href="Rx.CompletableEmitter.html#onComplete">onComplete</a> or <a href="Rx.CompletableEmitter.html#onError">onError(Throwable)</a></p>
+    <p>Dispose the resource, the operation should be idempotent.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="isDisposed"><span class="type-signature"></span>isDisposed<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="Rx.Disposable.html#isDisposed">Rx.Disposable#isDisposed</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Returns true if this resource has been disposed.</p>
 </div>
 
 
@@ -238,7 +277,9 @@ emitter was terminated via <a href="Rx.CompletableEmitter.html#onComplete">onCom
 
         
 <div class="param-desc">
-    <p>true if the downstream disposed the sequence or the emitter was terminated</p>
+    <ul>
+<li>true if this resource has been disposed</li>
+</ul>
 </div>
 
 
@@ -249,7 +290,7 @@ emitter was terminated via <a href="Rx.CompletableEmitter.html#onComplete">onCom
     </dt>
     <dd>
         
-<span class="param-type">boolean</span>
+<span class="param-type">Boolean</span>
 
 
     </dd>
@@ -264,7 +305,147 @@ emitter was terminated via <a href="Rx.CompletableEmitter.html#onComplete">onCom
 
     
 
-    <h4 class="name" id="onComplete"><span class="type-signature"></span>onComplete<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="onError"><span class="type-signature"></span>onError<span class="signature">(e)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="Rx.SingleObserver.html#onError">Rx.SingleObserver#onError</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Notifies the SingleObserver that the <a href="Rx.Single.html">Rx.Single</a> has experienced an error condition.</p>
+<p><p>
+If the <a href="Rx.Single.html">Rx.Single</a> calls this method, it will not thereafter call <a href="Rx.SingleObserver.html#onSuccess">onSuccess</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>e</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the exception encountered by the Single</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="onStart"><span class="type-signature">(protected) </span>onStart<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -311,7 +492,7 @@ emitter was terminated via <a href="Rx.CompletableEmitter.html#onComplete">onCom
 
 
 <div class="description">
-    <p>Signal the completion.</p>
+    <p>Called once the single upstream Disposable is set via onSubscribe.</p>
 </div>
 
 
@@ -346,7 +527,7 @@ emitter was terminated via <a href="Rx.CompletableEmitter.html#onComplete">onCom
 
     
 
-    <h4 class="name" id="onError"><span class="type-signature"></span>onError<span class="signature">(t<span class="signature-attributes">non-null</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="onSuccess"><span class="type-signature"></span>onSuccess<span class="signature">(t)</span><span class="type-signature"></span></h4>
 
     
 
@@ -367,6 +548,13 @@ emitter was terminated via <a href="Rx.CompletableEmitter.html#onComplete">onCom
 
     
 
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="Rx.SingleObserver.html#onSuccess">Rx.SingleObserver#onSuccess</a></li>
+        
+    </ul></dd>
     
 
     
@@ -393,7 +581,10 @@ emitter was terminated via <a href="Rx.CompletableEmitter.html#onComplete">onCom
 
 
 <div class="description">
-    <p>Signal an exception.</p>
+    <p>Notifies the SingleObserver with a single item and that the <a href="Rx.Single.html">Rx.Single</a> has finished sending
+push-based notifications.</p>
+<p><p>
+The <a href="Rx.Single.html">Rx.Single</a> will not call this method if it calls <a href="Rx.SingleObserver.html#onError">onError(Throwable)</a>.</p>
 </div>
 
 
@@ -447,139 +638,7 @@ emitter was terminated via <a href="Rx.CompletableEmitter.html#onComplete">onCom
 
             
 
-            <td class="description last"><p>the exception, not nil</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="setDisposable"><span class="type-signature"></span>setDisposable<span class="signature">(d<span class="signature-attributes">non-null</span>)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Sets a Disposable on this emitter; any previous Disposable
-will be disposed/cancelled.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>d</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Rx.Disposable.html">Rx.Disposable</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the disposable, nil is allowed</p></td>
+            <td class="description last"><p>the item emitted by the Single</p></td>
         </tr>
 
     
