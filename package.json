@@ -9,7 +9,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "install": "node_modules/.bin/jsdoc -c conf.json"
+    "install": "node_modules/.bin/jsdoc -c conf.json -u tutorials"
   },
   "repository": {
     "type": "git",
