@@ -1,0 +1,58 @@
+{
+    "plugins": ["plugins/markdown"],
+    "source": {
+        "include": "./src",
+        "includePattern": ".js$",
+        "excludePattern": "(node_modules/|docs)"
+    },
+    "templates": {
+        "default": {
+            "outputSourceFiles": false,
+            "includeDate": false
+        }
+    },
+    "opts": {
+        "template": "node_modules/docdash",
+        "encoding": "utf8",
+        "destination": "docs/",
+        "recurse": true,
+        "verbose": true
+    },
+
+    "docdash": {
+        "sectionOrder": [ 
+            "Tutorials",
+            "Namespaces",       
+            "Classes",
+            "Interfaces",
+            "Externals",
+            "Events",
+            "Mixins",
+            "Modules"
+        ],
+        "openGraph": {                  
+            "title": "RxLua",               
+            "type": "website",          
+            "image": "http://reactivex.io/assets/Rx_Icon.png",
+            "site_name": "RxLua Documentation",            
+            "url": "lxsmnsyc.github.io/rxlua"             
+        },
+        "search": true,  
+        "meta": {                       
+            "title": "RxLua",                
+            "description": "Reactive Extensions for Lua",          
+            "keyword": "reactivex,lua,observable,rx",
+            "icon": "http://reactivex.io/assets/Rx_Icon.png"
+        },   
+        "menu":{                        
+            "Github Repo":{         
+                "href":"https://github.com/lxsmnsyc/rxlua", 
+                "target":"_blank",
+                "class":"menu-item",
+                "id":"website_link"
+            }
+        },
+        "collapse": true,
+        "sort": true
+    }
+}
