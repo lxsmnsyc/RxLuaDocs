@@ -16,8 +16,9 @@
  *  <li><code>"Disposable already set!</code>.</li>
  * </ul> 
  *
- * <p>Implementation of {@link Rx.DisposableObserver#onStart()}, {@link Rx.DisposableObserver#onNext(Object)}, {@link Rx.DisposableObserver#onError(Throwable)}
- * and {@link Rx.DisposableObserver#onComplete()} are not allowed to throw any unchecked exceptions.
+ * <p>Implementation of [onStart()]{@link Rx.DisposableObserver#onStart}, [onNext(Object)]{@link Rx.DisposableObserver#onNext}, 
+ * [onError(Throwable)]{@link Rx.DisposableObserver#onError} and [onComplete()]{@link Rx.DisposableObserver#onComplete} 
+ * are not allowed to throw any unchecked exceptions.
  * 
  * @implements Rx.Disposable
  * @implements Rx.Observer

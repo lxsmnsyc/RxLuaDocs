@@ -59,7 +59,7 @@ class Observer{
      * <p>
      * The {@link Rx.Observable} may call this method 0 or more times.
      * <p>
-     * The <code>Observable}</code> will not call this method again after it calls either [onComplete]{@link Rx.Observer#onComplete} or
+     * The <code>Observable</code> will not call this method again after it calls either [onComplete]{@link Rx.Observer#onComplete} or
      * [onError]{@link Rx.Observer#onError}.
      *
      * @param {*} t the item emitted by the Observable
